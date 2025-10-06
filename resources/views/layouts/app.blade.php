@@ -9,7 +9,7 @@
 <body class="bg-gray-50 min-h-screen flex flex-col">
     <header class="bg-white border-b shadow-sm">
         <div class="container mx-auto px-4 py-3">
-            <h1 class="text-2xl font-bold text-gray-800">Мій Блог</h1>
+            <h1 class="text-2xl font-bold text-gray-800">My Blog</h1>
         </div>
     </header>
 

@@ -8,11 +8,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('pages.home', ['title' => 'Головна']);
+        return view('pages.home', ['title' => 'Main']);
     }
 
     public function about()
     {
-        return view('pages.about', ['title' => 'Про сайт']);
+        return view('pages.about', ['title' => 'About']);
     }
 }

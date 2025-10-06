@@ -11,19 +11,19 @@ class PostController extends Controller
         $posts = [
             [
                 'title' => 'Laravel 11',
-                'excerpt' => 'Reverb, новинки',
+                'excerpt' => 'Reverb',
                 'author' => 'Admin',
                 'date' => now()
             ],
             [
                 'title' => 'Blade Components',
-                'excerpt' => 'Компоненти',
+                'excerpt' => 'Components',
                 'author' => 'Editor',
                 'date' => now()->subDays(2)
             ],
             [
                 'title' => 'Vite',
-                'excerpt' => 'Збірка, HMR',
+                'excerpt' => 'Text',
                 'author' => 'Admin',
                 'date' => now()->subWeek()
             ],
