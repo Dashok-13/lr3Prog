@@ -12,12 +12,12 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'slug', 
-        'description',
+        'slug',
+        'description'
     ];
 
-    public function cards(): HasMany
-    {
-        return $this->hasMany(Card::class);
+    public function cards(): HasMany 
+    { 
+        return $this->hasMany(Card::class); 
     }
 }

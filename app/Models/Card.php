@@ -14,7 +14,7 @@ class Card extends Model
 
     protected $fillable = [
         'user_id',
-        'category_id',
+        'category_id', 
         'front_text',
         'back_text',
         'example_sentence',
@@ -23,7 +23,7 @@ class Card extends Model
         'audio_url',
         'difficulty_level',
         'next_review_at',
-        'is_public',
+        'is_public'
     ];
 
     protected $casts = [
@@ -31,23 +31,23 @@ class Card extends Model
         'is_public' => 'boolean',
     ];
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
+    public function author(): BelongsTo 
+    { 
+        return $this->belongsTo(User::class, 'user_id'); 
     }
 
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(Category::class);
+    public function category(): BelongsTo 
+    { 
+        return $this->belongsTo(Category::class); 
     }
 
-    public function tags(): BelongsToMany
-    {
-        return $this->belongsToMany(Tag::class);
+    public function tags(): BelongsToMany 
+    { 
+        return $this->belongsToMany(Tag::class); 
     }
 
-    public function progress(): HasMany
-    {
-        return $this->hasMany(UserCardProgress::class);
+    public function progress(): HasMany 
+    { 
+        return $this->hasMany(UserCardProgress::class); 
     }
 }

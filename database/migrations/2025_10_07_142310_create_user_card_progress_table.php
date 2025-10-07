@@ -17,7 +17,7 @@ return new class extends Migration
     $table->foreignId('card_id')->constrained()->cascadeOnDelete();
     $table->integer('correct_answers')->default(0);
     $table->integer('incorrect_answers')->default(0);
-    $table->float('confidence_level')->default(0.0); // Рівень впевненості 0-1
+    $table->float('confidence_level')->default(0.0);  
     $table->timestamp('last_reviewed_at')->nullable();
     $table->timestamp('next_review_at')->nullable();
     $table->boolean('is_learned')->default(false);

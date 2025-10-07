@@ -1,9 +1,21 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\CardController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/', [CardController::class, 'index'])->name('home');
+
+Route::resource('cards', CardController::class);
+
+Route::get('/study', [CardController::class, 'study'])->name('cards.study');
+Route::post('/cards/{card}/review', [CardController::class, 'review'])->name('cards.review');
+
+Route::resource('categories', CategoryController::class)->only(['index', 'show']);
+
+Route::resource('tags', TagController::class)->only(['index', 'show']);
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');

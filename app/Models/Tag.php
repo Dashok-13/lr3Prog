@@ -12,11 +12,11 @@ class Tag extends Model
 
     protected $fillable = [
         'name',
-        'slug',
+        'slug'
     ];
 
-    public function cards(): BelongsToMany
-    {
-        return $this->belongsToMany(Card::class);
+    public function cards(): BelongsToMany 
+    { 
+        return $this->belongsToMany(Card::class); 
     }
 }

@@ -14,11 +14,11 @@ class UserCardProgress extends Model
         'user_id',
         'card_id',
         'correct_answers',
-        'incorrect_answers',
+        'incorrect_answers', 
         'confidence_level',
         'last_reviewed_at',
         'next_review_at',
-        'is_learned',
+        'is_learned'
     ];
 
     protected $casts = [
@@ -27,13 +27,13 @@ class UserCardProgress extends Model
         'is_learned' => 'boolean',
     ];
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
+    public function user(): BelongsTo 
+    { 
+        return $this->belongsTo(User::class); 
     }
 
-    public function card(): BelongsTo
-    {
-        return $this->belongsTo(Card::class);
+    public function card(): BelongsTo 
+    { 
+        return $this->belongsTo(Card::class); 
     }
 }

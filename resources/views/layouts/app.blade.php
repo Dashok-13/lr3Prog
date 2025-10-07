@@ -3,40 +3,42 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? 'My Blog' }}</title>
+    <title>@yield('title','Language Cards')</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 min-h-screen flex flex-col">
-    <header class="bg-white border-b shadow-sm">
-        <div class="container mx-auto px-4 py-3">
-            <h1 class="text-2xl font-bold text-gray-800">My Blog</h1>
-        </div>
-    </header>
-
-    <nav class="bg-blue-600 text-white shadow-md">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-center space-x-8 py-3">
-                <a href="/" class="hover:bg-blue-700 px-3 py-2 rounded transition duration-200 {{ request()->is('/') ? 'bg-blue-800' : '' }}">
-                    Main
-                </a>
-                <a href="/posts" class="hover:bg-blue-700 px-3 py-2 rounded transition duration-200 {{ request()->is('posts') ? 'bg-blue-800' : '' }}">
-                    Posts
-                </a>
-                <a href="/about" class="hover:bg-blue-700 px-3 py-2 rounded transition duration-200 {{ request()->is('about') ? 'bg-blue-800' : '' }}">
-                    About
-                </a>
+<body class="bg-gray-50">
+    <div class="container mx-auto p-6">
+        <header class="mb-8">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-blue-600">
+                    <a href="{{ route('home') }}">🗂️ Language Cards</a>
+                </h1>
+                <nav class="flex space-x-4">
+                    <a href="{{ route('home') }}" class="text-gray-700 hover:text-blue-600 font-medium">Всі картки</a>
+                    <a href="{{ route('cards.study') }}" class="text-gray-700 hover:text-blue-600 font-medium">Навчання</a>
+                    <a href="{{ route('categories.index') }}" class="text-gray-700 hover:text-blue-600 font-medium">Категорії</a>
+                    <a href="{{ route('tags.index') }}" class="text-gray-700 hover:text-blue-600 font-medium">Теги</a>
+                    <a href="{{ route('cards.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm">
+                        Створити картку
+                    </a>
+                </nav>
             </div>
-        </div>
-    </nav>
+ 
+            @if(session('success'))
+                <div class="mt-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if(session('error'))
+                <div class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                    {{ session('error') }}
+                </div>
+            @endif
+        </header>
 
-    <main class="flex-grow container mx-auto px-4 py-8">
-        @yield('content')
-    </main>
-
-    <footer class="bg-gray-800 text-white border-t">
-        <div class="container mx-auto px-4 py-4 text-center">
-            &copy; {{ now()->year }} My blog.
-        </div>
-    </footer>
+        <main>
+            @yield('content')
+        </main>
+    </div>
 </body>
 </html>
