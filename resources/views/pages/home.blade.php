@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('components.header')
 <div class="max-w-4xl mx-auto">
     <h1 class="text-4xl font-bold text-gray-800 mb-6 text-center">{{ $title }}</h1>
     <div class="bg-white rounded-lg shadow-md p-8">
