@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -44,5 +45,29 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the cards for the user.
+     */
+    public function cards(): HasMany
+    {
+        return $this->hasMany(Card::class);
+    }
+
+    /**
+     * Get the card progress records for the user.
+     */
+    public function cardProgress(): HasMany
+    {
+        return $this->hasMany(UserCardProgress::class);
+    }
+
+    /**
+     * Get the cards that user is learning.
+     */
+    public function learningCards()
+    {
+        return $this->hasManyThrough(Card::class, UserCardProgress::class, 'user_id', 'id', 'id', 'card_id');
     }
 }
